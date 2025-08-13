@@ -1,27 +1,29 @@
 import 'dotenv/config';
-import { serverSchema,githubSchema } from './schema';
+import { serverSchema, githubSchema } from './schema';
+import { access } from 'fs';
 
-const parsedServerEnv = serverSchema.safeParse(process.env);
-const parsedGithubEnv = githubSchema.safeParse(process.env);
+const rootEnv = { ...process.env };
+const parsedServerEnv = serverSchema.safeParse(rootEnv);
+const parsedGithubEnv = githubSchema.safeParse(rootEnv);
 
 if ( !parsedServerEnv.success || !parsedGithubEnv.success) {
     console.error(
         '❌ Variáveis de ambiente inválidas:',
-        parsedGithubEnv.error
+        parsedServerEnv.error?.format,
+        parsedGithubEnv.error?.format
     );
     throw new Error('Configuração de ambiente inválida.');
 }
 
 const serverEnvData = parsedServerEnv.data;
-const envData = parsedGithubEnv.data;
+const githubEnvData = parsedGithubEnv.data;
 
+export const serverConfig = {
+    port: serverEnvData.PORT,
+};
 
-export const config = {
-    github:{
-        GITHUB_API_TOKEN: envData.GITHUB_API_TOKEN,
-        GITHUB_USERNAME: envData.GITHUB_USERNAME,
-    },
-    server: {
-        port: serverEnvData.PORT,
-    }
+export const githubConfig = {
+    accessToken: githubEnvData.GITHUB_ACCESS_TOKEN,
+    apiUrl: githubEnvData.GITHUB_ACCESS_URL,
+    username: githubEnvData.GITHUB_USERNAME,
 }
