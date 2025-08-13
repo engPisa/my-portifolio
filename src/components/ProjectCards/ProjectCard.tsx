@@ -1,4 +1,4 @@
-import { GitHubRepo } from "@/services/github";
+import { GitHubRepo } from "@/services/github.service";
 
 interface ProjectCardProps {
     repo: GitHubRepo;
@@ -18,7 +18,7 @@ export default function ProjectCard ({ repo }: ProjectCardProps) {
     const formattedName = repo.name.replace(/[-_]/g, ' ')
     return (
             <div className="bg-[#fdfaf6] border border-[#e6dcd5] rounded-xl p-5 flex flex-col h-full">
-      <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+      <a href={repo.url} target="_blank" rel="noopener noreferrer">
         <div className="w-full h-44 bg-[#f2ebe6] border border-[#e6dcd5] rounded-lg mb-5"></div>
       </a>
       <div className="flex justify-between items-start mb-2">
