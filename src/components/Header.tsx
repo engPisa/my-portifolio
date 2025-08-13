@@ -5,8 +5,8 @@ export default function Header(){
             <nav>
                 <ul className="flex space-x-6 md:space-x-8 text-sm">
                     <li><a href="#" className="text-gray-500 transition-colors">Projetos</a></li>
-                    <li><a href="#" className="text-gray-500 transition-colors"></a>Stacks</li>
-                    <li><a href="#" className="text-gray-500 transition-colors"></a>Experiência</li>
+                    <li><a href="#" className="text-gray-500 transition-colors">Stacks</a></li>
+                    <li><a href="#" className="text-gray-500 transition-colors">Experiência</a></li>
                     <li><a href="#" className="text-gray-500 transition-colors">Contato</a></li>
                 </ul>
             </nav>

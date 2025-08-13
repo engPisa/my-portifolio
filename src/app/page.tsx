@@ -1,7 +1,9 @@
-import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
-import ProjectList from "@/components/ProjectList/ProjectList";
-import SkillsCarousel from "@/components/SkillsCarousel/SkillsCarousel";
+import ContactCard from '@/components/ContactCard/ContactCard';
+import ExperienceList from '@/components/ExperienceList/ExperienceList';
+import Header from '@/components/Header';
+import HeroSection from '@/components/HeroSection';
+import ProjectList from '@/components/ProjectList/ProjectList';
+import SkillsCarousel from '@/components/SkillsCarousel/SkillsCarousel';
 
 export default function Home() {
   return (
@@ -14,6 +16,12 @@ export default function Home() {
         </div>
         <div>
           <ProjectList />
+        </div>
+        <div className="py-16">
+          <ExperienceList />
+        </div>
+        <div>
+          <ContactCard />
         </div>
       </div>
     </div>
