@@ -1,4 +1,4 @@
-import Button from '@/components/Button';
+import Button from '@/components/Buttons/Button';
 import { Send, Github , Linkedin } from 'lucide-react';
 
 export default function ContactCard() {
