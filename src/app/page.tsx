@@ -1,5 +1,6 @@
 import ContactCard from '@/components/ContactCard/ContactCard';
 import ExperienceList from '@/components/ExperienceList/ExperienceList';
+import Footer from '@/components/FooterPage/Footer';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import ProjectList from '@/components/ProjectList/ProjectList';
