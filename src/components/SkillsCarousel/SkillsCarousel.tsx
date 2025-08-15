@@ -5,13 +5,12 @@ import { skills } from '@/data/Skills';
 import styles from '@/components/SkillsCarousel/SkillsCarousel.module.css'; 
 
 export default function SkillsCarousel() {
-
   const sliderRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const track = trackRef.current;
     const slider = sliderRef.current;
-
     if (!track || !slider) return;
 
     const originalItems = Array.from(track.children);
@@ -20,8 +19,9 @@ export default function SkillsCarousel() {
     });
 
     let offset = 0;
-    const normalSpeed = 0.5;
-    const slowSpeed = 0.15;
+    let animationFrameId: number; 
+    const normalSpeed = 0.9;
+    const slowSpeed = 0.25;
     let currentSpeed = normalSpeed;
     let targetSpeed = normalSpeed;
 
@@ -39,43 +39,42 @@ export default function SkillsCarousel() {
       if (offset >= trackWidth) {
         offset -= trackWidth;
       }
-      
       if (track) {
         track.style.transform = `translate3d(${-offset}px, 0, 0)`;
       }
-      
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     }
 
     animate();
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       slider.removeEventListener('mouseenter', handleMouseEnter);
-      slider.removeEventListener('mouseleave', handleMouseEnter);
+      slider.removeEventListener('mouseleave', handleMouseLeave);
     };
 
   }, []);
 
   return (
-    <div ref={sliderRef} className={styles.slider}>
-      <div ref={trackRef} className={`${styles.slideTrack} flex items-center gap-10`}>
-        {skills.map((skill) => (
-          <a
-            key={skill.name}
-            href={skill.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={skill.name}
-            className="inline-flex items-center"
-          >
-            <img 
-              src={`https://skillicons.dev/icons?i=${skill.icon}`} 
-              alt={skill.name}
-              className="h-12"
-            />
-          </a>
-        ))}
+    <section className='container mx-auto px-6 md:px-12 py-4 sm:py-8 text-left'>
+      <div ref={sliderRef} className={styles.slider}>
+        <div ref={trackRef} className={`${styles.slideTrack} flex items-center gap-10`}>
+          {skills.map((skill) => (
+            <a 
+              key={skill.name} 
+              href={skill.url}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={skill.name}>
+              <img 
+                src={`https://skillicons.dev/icons?i=${skill.icon}`}
+                alt={skill.name}
+                className='h-12'  
+              />    
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
+  </section>
   );
 }
