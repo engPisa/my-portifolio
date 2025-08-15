@@ -56,7 +56,7 @@ export default function SkillsCarousel() {
   }, []);
 
   return (
-    <section className='container mx-auto px-6 md:px-16 py-8 sm:py-6 text-left"'>
+    <section className='container mx-auto px-6 md:px-12 py-4 sm:py-8 text-left'>
       <div ref={sliderRef} className={styles.slider}>
         <div ref={trackRef} className={`${styles.slideTrack} flex items-center gap-10`}>
           {skills.map((skill) => (

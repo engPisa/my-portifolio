@@ -6,7 +6,7 @@ export default async function ProjectList() {
     try {
         const repos = await fetchPinnedGitHubProjects(githubConfig.username);
         return (
-            <section className="container mx-auto px-6 md:px-12 py-16 sm:py-24">
+            <section className="container mx-auto px-6 md:px-12 py-4 sm:py-8">
                 <h2 className="text-3xl font-serif text-accent text-left mb-12">
                     Projetos em Destaque
                 </h2>
